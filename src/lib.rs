@@ -189,6 +189,40 @@ impl Sub<usize> for Indent {
     }
 }
 
+#[derive(Copy, Clone)]
+pub enum WriteMode {
+    // Backsup the original file and overwrites the orignal.
+    Replace,
+    // Overwrites original file without backup.
+    Overwrite,
+    // Write the output to stdout.
+    Display,
+    // Write the diff to stdout.
+    Diff,
+    // Return the result as a mapping from filenames to Strings.
+    Return,
+    // Display how much of the input file was processed
+    Coverage,
+    // Unfancy stdout
+    Plain,
+}
+
+impl FromStr for WriteMode {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "replace" => Ok(WriteMode::Replace),
+            "display" => Ok(WriteMode::Display),
+            "overwrite" => Ok(WriteMode::Overwrite),
+            "diff" => Ok(WriteMode::Diff),
+            "coverage" => Ok(WriteMode::Coverage),
+            "plain" => Ok(WriteMode::Plain),
+            _ => Err(()),
+        }
+    }
+}
+
 pub enum ErrorKind {
     // Line has exceeded character limit
     LineOverflow,
