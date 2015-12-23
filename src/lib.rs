@@ -62,6 +62,7 @@ pub mod rustfmt_diff;
 mod chains;
 mod macros;
 mod patterns;
+mod bin;
 
 const MIN_STRING: usize = 10;
 // When we get scoped annotations, we should have rustfmt::skip.
