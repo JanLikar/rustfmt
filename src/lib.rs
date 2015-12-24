@@ -43,6 +43,7 @@ use config::Config;
 
 #[macro_use]
 mod utils;
+pub mod bin;
 pub mod config;
 pub mod filemap;
 mod visitor;
