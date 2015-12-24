@@ -106,11 +106,6 @@ pub fn write_file(text: &StringBuffer,
             let file = try!(File::create(filename));
             try!(write_system_newlines(file, text, config));
         }
-        WriteMode::NewFile(extn) => {
-            let filename = filename.to_owned() + "." + extn;
-            let file = try!(File::create(&filename));
-            try!(write_system_newlines(file, text, config));
-        }
         WriteMode::Plain => {
             let stdout = stdout();
             let stdout = stdout.lock();

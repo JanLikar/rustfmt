@@ -194,8 +194,6 @@ pub enum WriteMode {
     Replace,
     // Overwrites original file without backup.
     Overwrite,
-    // str is the extension of the new file.
-    NewFile(&'static str),
     // Write the output to stdout.
     Display,
     // Write the diff to stdout.
